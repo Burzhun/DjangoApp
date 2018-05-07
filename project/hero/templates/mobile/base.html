@@ -1,0 +1,119 @@
+{% load pipeline %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="utf-8">
+    <!-- <base href="/"> -->
+
+    <title>Стань героем Men’s Health!</title>
+    <meta name="description" content="">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <link rel="icon" href="{% static 'img/icon/favicon.ico' %}">
+
+    <!-- Template Basic Images End -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hero.mhealth.ru">
+    <meta property="og:title" content="Стань героем Men’s Health!">
+    <meta property="og:description"
+          content="Участвуй в конкурсе, борись, побеждай - и становись украшением обложки твоего любимого журнала.">
+    <meta property="og:image"
+          content="https://{{ request.get_host }}{% static 'img/share.jpg' %}">
+    <!-- Custom Browsers Color Start -->
+    <meta name="theme-color" content="#000">
+    <!-- Custom Browsers Color End -->
+    {% stylesheet 'main' %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    <!— Global site tag (gtag.js) - Google Analytics —>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116780115-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-116780115-1');
+    </script>
+
+
+    <!— Yandex.Metrika counter —>
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter48311753 = new Ya.Metrika({
+                        id: 48311753,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                } catch (e) {
+                }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () {
+                    n.parentNode.insertBefore(s, n);
+                };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/48311753" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!— /Yandex.Metrika counter —>
+</head>
+<body>
+{% block pupup_block %}
+    {% if not request.user.is_authenticated %}
+        <div class="wrapp_popup-login">
+            <div class="content-popup-login">
+                <img src="{% static 'img/cansel.svg' %}" alt="" class="close_mob_wrapp">
+                <div class="title-login-popup">
+                    Вход
+                </div>
+                <div class="description-login-popup">
+                    Авторизуйтесь с помощью одной из соцсетей
+                </div>
+                <div class="login-soc">
+                    <a href="{% url 'social:begin' 'facebook' %}?next=/form">
+                        <img src="{% static 'img/icon/log-fb.jpg' %}" alt="">
+                    </a>
+                    <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/form">
+                        <img src="{% static 'img/icon/log-vk.jpg' %}" alt="">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block container %}
+
+{% endblock %}
+<script src="{% static 'js/scripts.min.js' %}"></script>
+<script src="{% static 'js/scripts2.min.js' %}"></script>
+
+</body>

@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load imagekit static %}
+
+{% block seo %}
+    <meta property="og:url" content="https://{{ request.get_host }}{{ request.path }}">
+    <meta property="og:title" content="Выбери настоящего Героя Men’s Health!">
+    <meta property="og:description"
+          content="Лучший из лучших - прямо перед тобой. Голосуй - и увидишь своего фаворита на обложке Men’s Health!">
+    <meta property="og:image"
+          content="https://{{ request.get_host }}{% static 'img/share.jpg' %}">
+{% endblock %}
+{% block body_class %}{% endblock %}
+{% block pupup_block %}
+    {% if not request.user.is_authenticated %}
+        <div class="wrapp_popup-login">
+            <div class="content-popup-login">
+                <div class="title-login-popup">
+                    Вход
+                </div>
+                <div class="description-login-popup">
+                    Авторизуйтесь с помощью одной из соцсетей
+                </div>
+                <div class="login-soc">
+                    <a href="{% url 'social:begin' 'facebook' %}">
+                        <img src="{% static 'img/icon/log-fb.jpg' %}" alt="">
+                    </a>
+                    <a href="{% url 'social:begin' 'vk-oauth2' %}">
+                        <img src="{% static 'img/icon/log-vk.jpg' %}" alt="">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-12 players-page_mobile-wrapp">
+            <div class=" players-page_mobile ">
+                <div class="players-page_mobile--left">
+                    <div class="slick_mobile">
+                        <div class="count_check-mobile-page" id="#rating-{{ profile.id }}">
+                            {{ profile.rating }}
+                        </div>
+                        <div class="arrows">
+                            <div class="left_arrow"></div>
+                            <div class="right_arrow"></div>
+                        </div>
+                        <div class="mobile_img_profile">
+                            {% for image in profile.images.all %}
+                                {% if image.file %}
+                                    <div class="item_img_profile-mobile">
+                                        {% thumbnail '372x496' image.file -- class="img-responsive" %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="socials-header">
+                            <a href="" target="_blank" onclick="
+                                    return Share.facebook(purl='https://{{ request.get_host }}{{ request.path }}', ptitle='Выбери настоящего Героя Men’s Health!');"
+                               class="social-header">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="" target="_blank" onclick="
+                                    return Share.vkontakte(purl='https://{{ request.get_host }}{{ request.path }}', ptitle='Выбери настоящего Героя Men’s Health!');"
+                               class="social-header">
+                                <i class="fab fa-vk"></i>
+                            </a>
+                            <a href="" target="_blank" onclick="
+                                    return Share.odnoklassniki(purl='https://{{ request.get_host }}{{ request.path }}');" class="social-header">
+                                <i class="fab fa-odnoklassniki"></i>
+                            </a>
+                            <a href="" target="_blank" onclick="
+                                    return Share.twitter(purl='https://{{ request.get_host }}{{ request.path }}', ptitle='Выбери настоящего Героя Men’s Health!');"
+                               class="social-header">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="" target="_blank" onclick="
+                                    return Share.telegram(purl='https://{{ request.get_host }}{{ request.path }}', ptitle='Выбери настоящего Героя Men’s Health!');"
+                               class="social-header">
+                                <i class="fab fa-telegram-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="players-page_mobile--right">
+                    <div class="more_info-name-page">
+                        {{ profile.fio }}
+                    </div>
+                    <div class="more_info-attribute">
+                        <div class="more_info-attribute-age">
+                            {{ profile.correct_age|default:'' }}
+                        </div>
+                        <div class="more_info-attribute-growth">
+                            {{ profile.height }} см
+                        </div>
+                        <div class="more_info-attribute-weight">
+                            {{ profile.weight }} кг
+                        </div>
+                    </div>
+                    <div class="more_info-about">
+                        <p>
+                            <span>Город:</span> {{ profile.city }}
+                        </p>
+                        <p>
+                            <span>Профессия:</span> {{ profile.profession }}
+                        </p>
+                        <p>
+                            <span>Интересы и увлечения:</span> {{ profile.interests }}
+                        </p>
+                        <p>
+                            <span>О себе:</span> {{ profile.info }}
+                        </p>
+                    </div>
+
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.profile.can_vote %}
+                            <div class=" all_mens vote_button" user_id={{ profile.user_id }}>
+                                Голосовать
+                            </div>
+                            <div class=" all_mens more_info-btn_block voted_button" style="display:none;">
+                                Вы проголосовали
+                            </div>
+                        {% else %}
+                            <div class=" all_mens more_info-btn_block">
+                                Вы проголосовали
+                            </div>
+                            <div class="spam">
+                                Ваш голос уже отдан за одного из участников. По правилам конкурса голосовать можно один
+                                раз в сутки.
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="red-btn no-auth-vote"
+                             data-link="{% url 'participant-page' profile_id=profile.user.id %}">
+                            Голосовать
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <a href="{% url 'participants' %}" class="all_mens">Все участники</a>
+        </div>
+    </div>
+{% endblock %}

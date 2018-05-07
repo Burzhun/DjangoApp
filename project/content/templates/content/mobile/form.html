@@ -1,0 +1,158 @@
+{% extends 'mobile/base.html' %}
+{% load static %}
+{% block container %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <header>
+                    <div class="logo-mens">
+                        <a href="/"> <img src="{% static 'img/icon/logo_mh.png' %}" alt=""></a>
+                    </div>
+
+                    <div class="socials-header">
+                        
+                        <div class="social-header">
+                            <i class="fa fa-facebook"></i>
+                        </div>
+                        <div class="social-header">
+                            <img src="{% static 'img/icon/h-vk.png' %}" alt="">
+                        </div>
+                        <div class="social-header">
+                            <img src="{% static 'img/icon/h-ok.png' %}" alt="">
+                        </div>
+                        <div class="social-header">
+                            <img src="{% static 'img/icon/h-tw.png' %}" alt="">
+                        </div>
+                        <div class="social-header">
+                            <img src="{% static 'img/icon/h-tel.png' %}" alt="">
+                        </div>
+                    </div>
+
+                    {% if request.user.is_authenticated %}
+                        <div class="author_user">
+                            <div class="avatar">
+                                {% if request.user.profile.avatar %}
+                                    <a href="{% url "form-page" %}"><img src="{{ request.user.profile.avatar.url }}" alt=""></a>
+                                {% endif %}
+                            </div>
+                            <div class="author_user_name">
+                                <a href="{% url "form-page" %}">{{ request.user.profile.fio }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </header>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="title-profile">
+                    Анкета участника
+                </div>
+                <div class="profile-dokaz">
+                    Докажи и нам, и читателям, что именно ты достоин высокого звания Героя МН и именно твоя фотография
+                    должна красоваться на обложке одного из номеров Men's Health в 2018 году. Заполняй форму регистрации
+                    участвуй в конкурсных мероприятиях и побеждай
+                </div>
+                <form method="post" enctype="multipart/form-data" class="profile-page">
+                    {% csrf_token %}
+                    <label>
+                        <span> Имя и фамилия</span>
+                        <input type="text" name="fio" required value="{{ form.fio.value|default:'' }}">
+                    </label>
+
+                    <div class="free_element-form">
+                        <label>
+                            <span> Возраст, полных лет</span>
+                            <input type="text" name="age" required value="{{ form.age.value|default:'' }}">
+                        </label>
+                        <label>
+                            <span>Рост, см</span>
+                            <input type="text" name="height" required value="{{ form.height.value|default:'' }}">
+                        </label>
+
+                        <label>
+                            <span> Вес, кг</span>
+                            <input type="text" name="weight" required value="{{ form.weight.value|default:'' }}">
+                        </label>
+                    </div>
+
+                    <label>
+                        <span> Город, в котором я живу</span>
+                        <input type="text" name="city" required value="{{ form.city.value|default:'' }}">
+                    </label>
+
+                    <label>
+                        <span>Гражданство</span>
+                        <input type="text" name="citizenship" required value="{{ form.citizenship.value|default:'' }}">
+                    </label>
+
+                    <label>
+                        <span>Профессия (для учащихся – указать учебное заведение и факультет)</span>
+                        <input type="text" name="profession" required value="{{ form.profession.value|default:'' }}">
+                    </label>
+
+                    <label>
+                        <span>Интересы и увлечения</span>
+                        <input type="text" name="interests" required value="{{ form.interests.value|default:'' }}">
+                    </label>
+
+                    <div class="photos">
+                        <div class="photos-text">
+		             <span>
+		               Фотографии
+		             </span>
+                            Ты можешь загрузить 5 фотографий. Вес каждой фотографии не более 5 Мб.
+                        </div>
+
+
+                        <div class="photo-items">
+                            {% for field in images %}
+                                {% if field.file %}
+                                <label>
+                                    <div class="photo-item-mobile  ">
+                                        <div class="delete_img_mobile"><i class="fas fa-times"></i></div>
+                                        
+                                        <img src="{{ field.file.url }}" alt="">
+                                        
+                                        <input type="hidden" value="{{ field.pk }}" name="image-{{ forloop.counter0 }}">
+                                    <div class="check_photo"><input type="radio" name="radio_photo"> <span
+                                            class="check_photo_img">Фото профиля</span></div>
+                                    </div>
+                                </label>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <label class="add-img "><input type="file" type="image/*" style="display: none;" onchange="handleFilesMobile(this, this.files)">
+                            <i class="fas fa-camera-retro"></i> Добавить фотографии
+                        </label>
+
+                    </div>
+
+                    <label>
+                  <span>
+                    О себе
+                  </span>
+                        <textarea name="info">{{ form.info.value|default:'' }}</textarea>
+                    </label>
+                    <label class="checkbox">
+                        <input value="{{ profile_form.info.value }}" name="{{ profile_form.info.name }}" type="checkbox"
+                               required>
+                        <span>
+                        Согласен с <a href="{% static "docs/terms.docx" %}">правилами проведения конкурса</a>
+	                </span>
+                    </label>
+                    <button class="all_mens" type="submit">Отправить на модерацию</button>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+
+            <div class="col-12">
+
+                <a href="/"><img src="img/icon/logo_mh.png" alt="" class="logo_footer"></a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

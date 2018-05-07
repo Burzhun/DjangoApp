@@ -1,0 +1,551 @@
+
+{% extends 'mobile/base.html' %}
+{% load static %}
+{% load imagekit %}
+
+{% block container %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                {% block header %}
+                    <div class="big-title-mobile">
+                        Выиграй конкурс и стань героем
+                    </div>
+
+                    <div class="mobile-logo_front">
+                        <img src="{% static 'img/logo_mobile.png' %}" alt="">                        
+                        <div class="mobile_share_front ">
+                            <img src="{% static 'img/icon/share.png' %}" alt="">
+                            <div class="hide_share">
+
+                                <a href="https://m.facebook.com/sharer/sharer.php?u=https://hero.mhealth.ru/"
+                                   target="_blank" onclick="return Share.me(this);" class="social-header">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a  href="http://vk.com/share.php?url=https://hero.mhealth.ru/&title=Стань героем Men’s Health!&description=Участвуй в конкурсе, борись, побеждай - и становись украшением обложки твоего любимого журнала.&image=http://hero.mhealth.ru/img/share.jpg&noparse=true" target="_blank" onclick="return Share.me(this);" class="social-header">
+                                    <i class="fab fa-vk"></i>
+                                </a>
+                                <a href="http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1&st.comments=Участвуй в конкурсе, борись, побеждай - и становись украшением обложки твоего любимого журнала.&st._surl=https://hero.mhealth.ru/" target="_blank" onclick="return Share.me(this);" class="social-header">
+                                    <i class="fab fa-odnoklassniki"></i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Ffiddle.jshell.net%2F_display%2F&text=Стань героем Men’s Health!&url=https://hero.mhealth.ru/" target="_blank" onclick="return Share.me(this)" class="social-header">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://t.me/share/url?url=https://hero.mhealth.ru/&amp;text=Стань героем Men’s Health!" target="_blank" onclick="return Share.me(this);" class="social-header">
+                                    <i class="fab fa-telegram-plane"></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="front-mobile-slick-img">
+                        <div class="front-mobile-item-img">
+                            <img src="{% static 'img/men_mobile.png' %}" alt="">
+                        </div>
+                        <div class="front-mobile-item-img">
+                            <img src="{% static 'img/men_mobile1.png' %}" alt="">
+                        </div>
+
+                        <div class="front-mobile-item-img">
+                            <img src="{% static 'img/men_mobile2.png' %}" alt="">
+                        </div>
+
+                        <div class="front-mobile-item-img">
+                            <img src="{% static 'img/men_mobile3.png' %}" alt="">
+                        </div>
+
+                    </div>
+                {% endblock %}
+
+                {% if not request.user.is_authenticated %}
+                    <div class="login hero">
+                        Стать героем
+                        men’s health
+                    </div>
+                {% else %}
+                    <div class="form hero">
+                        Стать героем
+                        men’s health
+                    </div>
+                {% endif %}
+                
+                <div class="row">                   
+                    <div class="col-12">
+                        <div class="more_info-name show_text not-active">
+                            О конкурсе <span><img src="{% static 'img/icon/arrow_top.png' %}" alt=""></span>
+                        </div>
+                        <div style="height: 269px;" class="not-scroll not-active">
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>
+                            Дорогой друг! Редакция Men's Health снова решила украсить обложку одного из номеров человеком, благодаря которому мы не устаем делать наш журнал вот уже 20 лет — то есть тобой. По этому поводу мы снова запускаем конкурс «Герой МН», победителя которого ждет всероссийская слава, читательский почет и любовь поклонниц — ведь оказаться на обложке Men's Health дано исключительно супергероям. Ты из их числа? Тогда докажи и нам, и читателям, что именно ты достоин высокого звания Героя МН, и именно твоя фотография должна красоваться на обложке одного из номеров Men's Health в 2018 году. Нажимай кнопку «Участвовать в конкурсе», читай правила конкурса, заполняй форму регистрации, участвуй в конкурсных мероприятиях и побеждай!
+                                </FONT>
+                            </FONT>
+                            </P>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="more_info-name show_text not-active">
+                            Правила <span><img src="{% static 'img/icon/arrow_top.png' %}" alt=""></span>
+                        </div>
+                        <div style="height: 269px;" class="not-scroll not-active">
+                            <P ALIGN=CENTER STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><A NAME="_GoBack"></A>
+                                <FONT FACE="Times New Roman, serif"><FONT SIZE=4><B>Правила
+                                    фотоконкурса «Герой Men's Health»</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>Конкурс
+                                «</FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>Герой
+                                Men's Health</B></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=3>»
+                                (далее — «Конкурс») проводится на сайте
+                                «</FONT></FONT><FONT COLOR="#000000"><FONT
+                                    FACE="Times New Roman, serif"><FONT
+                                    SIZE=3><SPAN STYLE="text-decoration: none"><A
+                                    HREF="http://mhealth.ru/">www.mhealth.ru</A>»</SPAN></FONT></FONT></FONT>&nbsp;<FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>
+                                Настоящий Конкурс предусматривает
+                                призы победителям Конкурса, которые
+                                могут быть получены при выполнении
+                                условий и требований, изложенных в
+                                настоящих Правилах проведения Конкурса
+                                (далее — «Правила»).</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>В
+                                Конкурсе на сайте «</FONT></FONT><FONT COLOR="#000000"><FONT
+                                    FACE="Times New Roman, serif"><FONT
+                                    SIZE=3><SPAN STYLE="text-decoration: none"><A
+                                    HREF="http://mhealth.ru/">www.mhealth.ru</A>»</SPAN></FONT></FONT></FONT><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>
+                                (далее — «Сайт») </FONT></FONT><FONT COLOR="#000000"><FONT
+                                    FACE="Times New Roman, serif"><FONT
+                                    SIZE=3><SPAN STYLE="text-decoration: none">
+</SPAN></FONT></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=3>могут
+                                участвовать только зарегистрированные
+                                интернет-пользователи (далее - «Участники»),
+                                при этом факт регистрации на Сайте
+                                является разрешением Участника Конкурса
+                                хранить и обрабатывать его персональные
+                                данные в течение всего периода проведения
+                                Конкурса, а также в течение пяти лет
+                                после его завершения. Принятием настоящих
+                                Правил Участник выражает согласие на
+                                предоставление его персональных данных
+                                Организатору Конкурса.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>Организатор
+                                настоящего Конкурса - ООО «Москоутаймс»,
+                                ОГРН 1157746144467, ИНН 7704306823, местонахождение:
+                                127018, г. Москва, Полковая ул., дом 3, строение
+                                1 (далее – Организатор).</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>Указанный
+                                Конкурс проводится на территории
+                                Российской Федерации в период </FONT></FONT><FONT FACE="Times New Roman, serif"><FONT
+                                    SIZE=3><B>с
+                                12 апреля</B></FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=3>
+                            </FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>2018
+                                года по 16 августа 2018 года.</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>Участником
+                                Конкурса может стать любое дееспособное
+                                физическое лицо мужского пола не моложе
+                                18 лет, гражданин Российской Федерации,
+                                постоянно проживающий (зарегистрированный
+                                по месту жительства) на территории
+                                Российской Федерации.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>В
+                                Конкурсе запрещается участвовать
+                                работникам и представителям Организатора
+                                и Партнера, аффилированным лицам
+                                Организатора и Партнера, членам семей
+                                таких работников и представителей, а
+                                также работникам и представителям любых
+                                других лиц, имеющих непосредственное
+                                отношение к организации проведения
+                                Конкурса либо к проведению настоящего
+                                Конкурса, равно как и членам их семей.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>Конкурс
+                                не является лотереей либо иной, основанной
+                                на риске, игрой. Конкурс не носит
+                                вероятностного (случайного) характера,
+                                а проходит согласно настоящим Правилам.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>Настоящий
+                                текст Правил Конкурса не является
+                                публичной офертой в соответствии со
+                                ст. 435 и ч. 2 ст. 437 Гражданского Кодекса
+                                РФ.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3><B>1.
+                                Сроки проведения Конкурса</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>1.1.
+                                С 12 апреля 2018 года по 30 июля 2018 года —
+                                период приема фотографий на сайте.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>1.2.
+                                С 12 апреля 2018 года по 13 августа 2018 года –
+                                период голосования за участников
+                                Конкурса.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>1.3.
+                                16 августа 2018 года — подведение итогов
+                                Конкурса и оповещение победителей. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3><B>2.
+                                Цель проведения Конкурса</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in">
+                                <FONT FACE="Times New Roman, serif"><FONT SIZE=3>Воспитание
+                                    в участниках Конкурса стремления к
+                                    здоровому образу жизни. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3><B>3.
+                                Порядок участия в Конкурсе на сайте </B></FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>3.1.
+                                Для участия в Конкурсе необходимо: </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>-
+                                зарегистрироваться на сайте путем
+                                авторизации с помощью социальных сетей;</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>-
+                                заполнить анкету, ответив на все вопросы;</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>-
+                                приложить к анкете 4-5 своих фотографий
+                            </FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=3>в
+                                формате *.jpg. Одна из фотографий будет
+                                юзерпиком профайла участника. На
+                                фотографии должно быть отчетливо видно
+                                лицо участника Конкурса.</FONT></FONT></P>
+                            <P STYLE="margin-top: 0.19in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT
+                                    SIZE=3>3.2.
+                                Заполненная заявка отправляется на
+                                модерацию. Рассмотрение заявки может
+                                занять у Организатора до 10 календарных
+                                дней. Организатор оставляет за собой
+                                право отклонить заявку на участие в
+                                Конкурсе без объяснения причин или
+                                уточнять информацию анкеты участника.
+                            </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT FACE="Times New Roman, serif"><FONT
+                                    SIZE=3>3.3.
+                                В Конкурсе участвуют фотографии,
+                                отправленные не позднее 23:59:59 (московское
+                                время) 30 июля 2017 года.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>3.4.
+                                К участию принимаются фотографии,
+                                соответствующие теме Конкурса. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>3.5.
+                                Каждый Участник Конкурса может
+                                предоставить на Конкурс не более пяти
+                                (5) фотографий.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>3.6.
+                                Отправляя фотографии на Конкурс, Участник
+                                дает разрешение на использование
+                                предоставленного им материала
+                                Организатором при анонсировании
+                                Конкурса, освещении его в СМИ.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>3.7.
+                                Организатор вправе отправлять Участнику
+                                Конкурса информационные сообщения по
+                                электронному адресу, указанному
+                                Участником при регистрации на сайте. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>3.8.
+                                Для первоначальной заявки фотографии
+                                должны быть отправлены в формате JPG. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="margin-top: 0.19in; margin-bottom: 0.11in">
+                                <FONT FACE="Times New Roman, serif"><FONT SIZE=3>3.9. </FONT></FONT><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>Организатор
+                                оставляет за собой право вносить в
+                                настоящие правила дополнения или
+                                уточнения, не меняющие суть Конкурса и
+                                не ущемляющие оговоренные выше возможности
+                                конкурсантов, в любое время до окончания
+                                голосования.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT FACE="Times New Roman, serif"><FONT
+                                    SIZE=3>3.10.
+                                Организатор Конкурса вправе уведомить
+                                Участников Конкурса о предстоящих
+                                изменениях в Правилах Конкурса посредством
+                                массовой рассылки по адресам, указанным
+                                Участниками Конкурса при регистрации
+                                на Сайте.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3><B>4.
+                                Фотографии, которые не принимаются на
+                                Конкурс</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>4.1.
+                                Фотографии, противоречащие моральным
+                                и этическим нормам, а также фотографии на которых изображены алкогольная продукция, табак, табачная продукция, табачные изделия и курительные принадлежности.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3><B>5.
+                                Специальные условия для участников
+                                Конкурса</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>5.1.
+                                Присылая фотографии на Конкурс, Участник
+                                гарантирует, что является единственным
+                                обладателем исключительных прав на
+                                фотоработы, и каких-либо ограничений
+                                на их использование не существует.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>5.2.
+                                Предоставлением фотографии на Конкурс
+                                Участник выражает свое согласие с
+                                публикацией предоставляемой фотографии
+                                на ресурсах Организатора или ресурсах
+                                компаний-партнеров в рамках проводимых
+                                конкурсов, и передает Организатору
+                                неисключительные авторские и смежные
+                                права на фотографию (включая право на
+                                воспроизведение, распространение,
+                                импорт, публичный показ, передачу в
+                                эфир, сообщение для всеобщего сведения
+                                по кабелю, переработку) и разрешает
+                                Организатору использовать предоставленную
+                                фотографию для ее копирования или
+                                преобразования, как целое или как часть,
+                                отдельно или в связке с любыми словами
+                                и/или рисунками. А равно, Участник
+                                соглашается с использованием и
+                                опубликованием передаваемой фотографии
+                                и/или части изображения в журналах и
+                                Интернет ресурсах в рекламных и иных
+                                целях Организатором.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>5.3.
+                                В случае необходимости предоставления
+                                письменного подтверждения о передаче
+                                прав на используемое Организатором
+                                изображение от Участника к Организатору,
+                                Участник обязуется предоставить такое
+                                подтверждение/согласие в течение 2
+                                (двух) дней, с момента получения запроса
+                                от Организатора.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3><B>6.
+                                Голосование и Призы Конкурса</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>6.1.
+                                Подведение окончательных итогов Конкурса
+                                пройдет 16 августа 2018 года. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>6.2.
+                                Приз победителю Конкурса: размещение
+                                фотографии победителя на обложке журнала
+                                «Men's Health».</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>6.3.
+                                Конкурс состоит из двух этапов. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="margin-top: 0.19in; margin-bottom: 0.11in">
+                                <FONT FACE="Times New Roman, serif"><FONT SIZE=3>6.3.1. Первый
+                                    этап. Голосование. </FONT></FONT><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Голосовать
+                                за участников Конкурса смогут пользователи,
+                                зарегистрированные и авторизованные
+                                на Сайте. Каждый голос приравнивается
+                                к 1 (одному) баллу. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="margin-top: 0.19in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>Участник
+                                Конкурса вправе получать дополнительные
+                                баллы путем участия в мероприятиях
+                                партнеров Организатора, перечисленных
+                                на Сайте. За участие в каждом мероприятии
+                                участнику Конкурса добавляется 50
+                                (пятьдесят) баллов.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="margin-bottom: 0.11in"><FONT FACE="Times New Roman, serif"><FONT
+                                    SIZE=3>6.3.2
+                                Второй этап. Победитель Конкурса будет
+                                определяться жюри, в которое войдут
+                                представители Организатора, путем
+                                выбора из 10 (десяти) участников, получивших
+                                наибольшее количество баллов. Решение
+                                о победителях Конкурса принимается
+                                простым большинством голосов членов
+                                жюри, открытым голосованием. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>6.4.
+                                Организатор оставляет за собой право
+                                отказать в выдаче приза победителю в
+                                случае нарушения Участником Конкурса
+                                положений настоящих Правил, а также в
+                                иных случаях, предусмотренных действующим
+                                законодательством Российской Федерации.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>6.5.
+                                Приз нельзя обменять или заменить на
+                                денежный эквивалент.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>6.6.
+                                Победитель обязан за счет собственных
+                                средств прибыть по адресу: г. Москва,
+                                Полковая ул., дом 3, строение 1, чтобы
+                                Организатор произвел фотосъемку
+                                победителя для последующего размещения
+                                на обложке в номере журнала. Номер
+                                журнала, в котором размещается фотография
+                                победителя, будет опубликован Организатором
+                                на Сайте. </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3><B>7.
+                                Налоги</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>7.1.
+                                В соответствии с Налоговым кодексом
+                                РФ, физическое лицо (Участник Конкурса),
+                                получившее подарок в натуральной форме,
+                                стоимость которого превышает 4000,00
+                                рублей, самостоятельно исчисляет и
+                                выплачивает налог на доходы физических
+                                лиц (НДФЛ) в размере 35% от стоимости приза
+                                (п. 2 ст. 224 НК РФ), указанной в акте о
+                                передаче приза, подтверждающего получение
+                                приза.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3><B>8.
+                                Иные положения</B></FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>8.1.
+                                Факт участия в Конкурсе подразумевает,
+                                что его Участник ознакомлен с настоящими
+                                Правилами и тем самым выражает свое
+                                полное согласие с настоящими Правилами.
+                            </FONT></FONT>
+                            </P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>8.2.
+                                Организатор имеет право изменять любые
+                                условия Конкурса в соответствии с
+                                действующим законодательством РФ,
+                                отражая при этом все изменения в Правилах
+                                конкурса. Согласие с настоящими Правилами
+                                означает согласие Участника с тем, что
+                                в случае изменения или отмены Конкурса
+                                Организатором, последний не обязан
+                                возмещать расходы Участникам Конкурса,
+                                которые не закончили и не представили
+                                свою конкурсную работу, поскольку она
+                                заведомо не соответствует условиям.</FONT></FONT></P>
+                            <P ALIGN=JUSTIFY STYLE="text-indent: 0.2in; margin-bottom: 0.11in"><FONT
+                                    FACE="Times New Roman, serif"><FONT SIZE=3>8.3.
+                                Во всем, что не предусмотрено настоящими
+                                Правилами, Организатор и Участники
+                                Конкурса руководствуются действующим
+                                законодательством Российской Федерации.</FONT></FONT></P>
+                        </div>
+                    </div>                
+                    
+                    
+                </div>
+                
+                <div class="row">
+                    <div class="col-12">
+                       <div class="more_info-name section1">
+                                               Участники
+                                           </div>
+                        <div class="wrapp_players">
+                            <div class="arrows">
+                                <div class="left_arrow"></div>
+                                <div class="right_arrow"></div>
+                            </div>
+                            <div class="players players-slick">
+                                {% for profile in participants %}
+                                    <div class="player">
+                                        <div class="player-img">
+                                            <a href="{% url 'participant-page' profile_id=profile.user.id %}">
+                                                {% thumbnail '230x230' profile.images.first.file %}
+                                            </a>
+                                            <div class="count_check">
+                                                {{ profile.rating }}
+                                            </div>
+                                        </div>
+                                        <a href="{% url 'participant-page' profile_id=profile.user.id %}"
+                                           class="player-name">
+                                            <span>{{ profile.fio }}</span>
+                                        </a>
+                                        <div class="player-age">
+                                            {{ profile.correct_age }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <a href="/participants" class=" all_mens more_info-btn_block btn-transparent margin-bottom">
+                                                Все участники
+                        </a>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="more_info-name section2">
+                            МЕРОПРИЯТИЯ
+                        </div>
+
+                        <div class="wrapp_events">
+                           
+
+
+
+                            <div class="event-items">
+                                <div class="event-item">
+
+                                    <div class="event-item_img">
+                                        <img src="{% static 'img/exhibition.jpg' %}" alt="">
+                                    </div>
+
+                                    <div class="event-descriptions">
+
+                                        <div class="event-title">
+                                            Как сделать рывок к победе
+                                        </div>
+                                        
+                                        <div style="" class="scroll">
+                                            Если ты решил вступить в борьбу за место на обложке Men’s Health, имей в виду, что финалисты будут отбираться по числу набранных в ходе конкурса баллов. По его условиям, каждый отданный за тебя голос приравнивается к одному баллу, а вот за участие в одном спортивном мероприятии партнеров Men’s Health ты получишь сразу пятьдесят баллов.
+                                            Совсем скоро мы опубликуем список рекомендованных мероприятий. Следи за новостями!
+                                        </div>
+
+                                    </div>                               
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <a href="http://www.mhealth.ru"><img src="{% static 'img/icon/logo_mh.png' %}" alt="" class="logo_footer"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

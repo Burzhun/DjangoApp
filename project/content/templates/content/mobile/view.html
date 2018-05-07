@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load imagekit %}
+{% block content %}
+<div class="player players-page_mobile ">
+
+    <div class="more_info-name">
+      {{profile.fio}}
+    </div>
+
+    <div class="count_check-mobile">
+      {{profile.rating}}
+    </div>
+
+    <div class="more_info-attribute">
+      <div class="more_info-attribute-age">
+        {{ profile.correct_age }}
+      </div>
+      <div class="more_info-attribute-growth">
+        {{ profile.height }} см
+      </div>
+      <div class="more_info-attribute-weight">
+        {{ profile.weight }} кг
+      </div>
+    </div>
+
+    <div class="mobile_img_profile">
+    	{% for image in profile.images.all %}
+    	    {% if image.file %}
+      		<div class="item_img_profile-mobile">
+                {% thumbnail '372x496' image.file -- class="img-responsive" %}
+    	    </div>
+    	    {% endif %}
+    	{% endfor %}          
+    </div>
+
+    <div class="more_info-about">
+
+      <p>
+        <span>Город:</span> {{ profile.city }}
+
+      </p>
+      <p>
+        <span>Профессия:</span> {{ profile.profession }}
+
+      </p>
+
+      <p>
+        <span>Интересы и увлечения:</span> {{ profile.interests }}
+
+      </p>
+
+      <p>
+        <span>О себе:</span> {{ profile.info }}
+      </p>
+
+    </div>
+
+    {% if request.user.profile.can_vote %}
+    <div class=" all_mens vote_button" user_id={{profile.user_id}}>
+        Голосовать
+
+    </div>
+    <div class=" all_mens more_info-btn_block voted_button" style="display:none;">
+      Вы проголосовали
+
+    </div> 
+    {% else %}
+    <div class=" all_mens more_info-btn_block">
+      Вы проголосовали
+
+    </div>                        
+    <div class="spam">
+      Ваш голос уже отдан за одного из участников. По правилам конкурса голосовать можно один раз в сутки.
+
+    </div>
+    {% endif %}
+
+    <a href="/participants"><div class=" all_mens more_info-btn_block btn-transparent">
+     Все участники
+
+    </div></a>
+
+
+  </div>
+
+      
+{% endblock %}

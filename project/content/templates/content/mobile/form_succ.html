@@ -1,0 +1,69 @@
+{% extends 'mobile/base.html' %}
+{% load static %}
+{% block container %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <header>
+                    <div class="logo-mens">
+                        <a href="/"> <img src="{% static 'img/icon/logo_mh.png' %}" alt=""></a>
+                    </div>
+
+                    <div class="socials-header">
+                        <div class="mobile_share mobile">
+                            <img src="{% static 'img/icon/share.png' %}" alt="">
+                        </div>
+                        <div class="social-header">
+                            <i class="fa fa-facebook"></i>
+                        </div>
+                        <div class="social-header">
+                            <img src="{% static 'img/icon/h-vk.png' %}" alt="">
+                        </div>
+                        <div class="social-header">
+                            <img src="{% static 'img/icon/h-ok.png' %}" alt="">
+                        </div>
+                        <div class="social-header">
+                            <img src="{% static 'img/icon/h-tw.png' %}" alt="">
+                        </div>
+                        <div class="social-header">
+                            <img src="{% static 'img/icon/h-tel.png' %}" alt="">
+                        </div>
+                    </div>
+
+                    {% if request.user.is_authenticated %}
+                        <div class="author_user">
+                            <div class="avatar">
+                                {% if request.user.profile.avatar %}
+                                    <a href="{% url "form-page" %}"><img src="{{ request.user.profile.avatar.url }}" alt=""></a>
+                                {% endif %}
+                            </div>
+                            <div class="author_user_name">
+                                <a href="{% url "form-page" %}">{{ request.user.profile.fio }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </header>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="title-profile">
+                    Анкета участника
+                </div>
+                <div class="profile-dokaz">
+                    Ваша заявка отправлена на модерацию
+                </div>
+
+            </div>
+        </div>
+        <div class="row justify-content-center">
+
+
+            <div class="col-12">
+
+                <a href="/"><img src="img/icon/logo_mh.png" alt="" class="logo_footer"></a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
